@@ -1,0 +1,4 @@
+Django>=5.0
+django-mathfilters>=1.0.0
+razorpay>=1.4.1
+Pillow>=10.0.0

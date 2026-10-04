@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Vegetable | Registration{% endblock %}
+{% block content %}
+
+        <!-- Contact Start -->
+        <div class="container-fluid contact py-5">
+            <div class="container py-5">
+                <div class="p-5 bg-light rounded">
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <div class="text-center mx-auto" style="max-width: 700px;">
+                                <h1 class="text-primary pt-3">New Customer Registration</h1>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <form method="post">
+                                {% csrf_token %}
+                                {% for frm in form %}
+                                <div>
+                                    <label class="form-label">{{frm.label}}</label>
+                                    {{frm}}
+                                </div>
+                                {% endfor %}
+                                <button class="w-100 btn form-control border-secondary py-3 bg-white text-primary " type="submit">Submit</button>
+                            </form>
+                            {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-success">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+{% endblock %}

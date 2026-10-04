@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load mathfilters %}
+{% block title %}Vegetable | Orders{% endblock %}
+{% block content %}
+<!-- Single Page Header start -->
+        <div class="container-fluid page-header py-5">
+            <h1 class="text-center text-white display-6">My Orders</h1>
+            <!-- <ol class="breadcrumb justify-content-center mb-0">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item active text-white">Cart</li>
+            </ol> -->
+        </div>
+        <!-- Single Page Header End -->
+         <!-- Cart Page Start -->
+        <div class="container-fluid py-5">
+            <div class="container py-5">
+                <div class="table-responsive">
+                    {% if orders %}
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Products</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Total</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in orders %}
+                            <tr>
+                                <th scope="row">
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{item.product.image.url}}" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">
+                                    </div>
+                                </th>
+                                <td>
+                                    <p class="mb-0 mt-4">{{item.product.name}}</p>
+                                </td>
+                                <td>
+                                    <p class="mb-0 mt-4">₹{{item.product.price}}</p>
+                                </td>
+                                <td>
+                                    <p class="mb-0 mt-4">{{item.quantity}} {{item.product.unit}} </p>
+                                    
+                                </td>
+                                <td>
+                                    <p class="mb-0 mt-4">₹{{ item.quantity | mul:item.product.price}}</p>
+                                </td>
+                               
+                            
+                            </tr>
+                            {% endfor %}                          
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <h4>Your Order is empty</h4>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <!-- Cart Page End -->
+        {% endblock %}
